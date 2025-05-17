@@ -3,9 +3,9 @@ import HomeView from '@/views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue'
 
 export default createRouter({
-  history: createWebHashHistory(), // ← hash mode
+  history: createWebHashHistory('/jim-green-project/'), // ← hash mode
   routes: [
-    { path: '/jim-green-project/', component: HomeView },
-    { path: '/jim-green-project/about', component: AboutView },
+    { path: '/', component: HomeView },
+    { path: '/about', component: AboutView },
   ],
 })
