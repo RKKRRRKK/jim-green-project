@@ -1,6 +1,8 @@
 <script setup>
 /* No RouterLink import needed any more */
 import { RouterView } from 'vue-router'
+
+const BASE_URL = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -8,8 +10,8 @@ import { RouterView } from 'vue-router'
   <header class="app-header">
     <nav class="nav-bar">
       <!-- full-page reloads -->
-      <a href="/" class="nav-link">Home</a>
-      <a href="/#/about" class="nav-link">About</a>
+      <a :href="`${BASE_URL}#/`" class="nav-link">Home</a>
+      <a :href="`${BASE_URL}#/about`" class="nav-link">About</a>
     </nav>
   </header>
 
