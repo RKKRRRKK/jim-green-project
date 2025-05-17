@@ -7,13 +7,11 @@ import { templateCompilerOptions } from '@tresjs/core'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/jim-green-project/',
   plugins: [
-   
     vue({
-      ...templateCompilerOptions,    
+      ...templateCompilerOptions,
     }),
-
-    // Optional Vue-DevTools overlay
     vueDevTools(),
   ],
   resolve: {
