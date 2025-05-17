@@ -2,16 +2,16 @@
 /* No RouterLink import needed any more */
 import { RouterView } from 'vue-router'
 
-const BASE_URL = import.meta.env.BASE_URL
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '')
 </script>
 
 <template>
   <!-- fixed header bar -->
   <header class="app-header">
     <nav class="nav-bar">
-      <!-- full-page reloads -->
-      <a :href="`${BASE_URL}#/`" class="nav-link">Home</a>
-      <a :href="`${BASE_URL}#/about`" class="nav-link">About</a>
+      <a :href="`${BASE}/`" class="nav-link">Home</a>
+
+      <a :href="`${BASE}/#/about`" class="nav-link">About</a>
     </nav>
   </header>
 
