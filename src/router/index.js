@@ -2,10 +2,12 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import AboutView from '@/views/AboutView.vue'
 
-export default createRouter({
-  history: createWebHashHistory('/jim-green-project/'), // ← hash mode
+const router = createRouter({
+  history: createWebHashHistory(import.meta.env.BASE_URL), // <-- key change
   routes: [
     { path: '/', component: HomeView },
     { path: '/about', component: AboutView },
   ],
 })
+
+export default router
