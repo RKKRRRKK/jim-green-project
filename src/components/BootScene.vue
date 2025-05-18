@@ -9,6 +9,7 @@ import {
   NoColorSpace,
   PMREMGenerator,
   EquirectangularReflectionMapping,
+  MathUtils,
 } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader'
@@ -17,9 +18,9 @@ import { useTresContext } from '@tresjs/core'
 import bootUrl from '@/assets/model/boot3.glb?url'
 import colorUrl from '@/assets/model/color.jpg'
 import roughUrl from '@/assets/model/rough.jpg'
-import hdrUrl from '@/assets/hdr/hdr.hdr?url'
+import hdrUrl from '@/assets/hdr/hdr2.hdr?url'
 
-const { scene, renderer } = useTresContext() // refs to Tres scene & renderer
+const { scene, renderer } = useTresContext()
 
 onMounted(async () => {
   /* ---------- HDR → PMREM ---------- */
@@ -30,8 +31,7 @@ onMounted(async () => {
   pmrem.dispose()
   hdr.dispose()
 
-  scene.value.environment = envMap // reflections & IBL
-  // scene.value.background = envMap          // keep solid canvas background
+  scene.value.environment = envMap
 
   /* ---------- textures ---------- */
   const loader = new TextureLoader()
@@ -59,15 +59,15 @@ onMounted(async () => {
   /* ---------- boot geometry ---------- */
   const { scene: boot } = await new GLTFLoader().loadAsync(bootUrl)
 
-  /* centre & scale */
-  const box = new Box3().setFromObject(boot)
+  // Rotate boot 45° around its local X-axis
+  boot.rotation.y = MathUtils.degToRad(100)
+  boot.position.y += -0.45
 
-  /* strip vertex colours, recompute normals, assign material */
+  /* ---------- strip vertex colours, recompute normals, assign material ---------- */
   boot.traverse((o) => {
     if (!o.isMesh) return
     if (o.geometry.getAttribute('color')) o.geometry.deleteAttribute('color')
     o.geometry.computeVertexNormals()
-
     o.material = leather
     o.castShadow = true
     o.receiveShadow = true

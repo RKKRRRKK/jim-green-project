@@ -16,7 +16,7 @@ const route = useRoute()
     class="w-screen h-[calc(100vh-64px)]"
     :tone-mapping-exposure="0.9"
   >
-    <TresPerspectiveCamera makeDefault :position="[0, 1, 5]" />
+    <TresPerspectiveCamera makeDefault :position="[0, 1.5, 3.5]" />
     <OrbitControls
       makeDefault
       :mouseButtons="{ LEFT: MOUSE.ROTATE, MIDDLE: MOUSE.PAN, RIGHT: MOUSE.DOLLY }"
