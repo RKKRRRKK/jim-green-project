@@ -11,7 +11,7 @@ const BASE = import.meta.env.BASE_URL.replace(/\/$/, '')
     <nav class="nav-bar">
       <a :href="`${BASE}/`" class="nav-link">Home</a>
 
-      <a :href="`${BASE}/#/about`" class="nav-link">About</a>
+      <!-- <a :href="`${BASE}/#/about`" class="nav-link">About</a> -->
     </nav>
   </header>
 

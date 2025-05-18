@@ -6,7 +6,7 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL), // <-- key change
   routes: [
     { path: '/', component: HomeView },
-    { path: '/about', component: AboutView },
+    // { path: '/about', component: AboutView },
   ],
 })
 
